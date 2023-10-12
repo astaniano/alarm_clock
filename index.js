@@ -4,6 +4,7 @@ const startBtn = document.getElementById('start')
 const stopBtn = document.getElementById('stop')
 
 let oscillator;
+let intervalCount = 0;
 
 startBtn.addEventListener('click', () => {
     const context = new AudioContext()
@@ -13,19 +14,21 @@ startBtn.addEventListener('click', () => {
     oscillator.frequency.value = 800
     oscillator.connect(context.destination)
 
-    info.innerText = 'waiting for the specified time'
+    info.innerText = `waiting for the specified time (interval: ${intervalCount})`
 })
 
 let isOscillatorStarted = false
 
 setInterval(() => {
-    const currentTime = new Date()
-    const currentHourAndMins = currentTime.toString().slice(16, 21)
+    const currentHourAndMins = new Date().toString().slice(16, 21)
+    info.innerText = `waiting for the specified time (interval: ${intervalCount})`
 
     if (currentHourAndMins === time.value && !isOscillatorStarted && oscillator) {
         oscillator.start()
         isOscillatorStarted = true
     }
+
+    intervalCount++
 }, 59000)
 
 stopBtn.addEventListener('click', () => {
