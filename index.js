@@ -14,14 +14,14 @@ startBtn.addEventListener('click', () => {
     oscillator.frequency.value = 800
     oscillator.connect(context.destination)
 
-    info.innerText = `waiting for the specified time (interval: ${intervalCount})`
+    info.innerText = `waiting for the specified time`
 })
 
 let isOscillatorStarted = false
 
 setInterval(() => {
     const currentHourAndMins = new Date().toString().slice(16, 21)
-    info.innerText = `waiting for the specified time (interval: ${intervalCount})`
+    info.innerText = `waiting for the specified time (interval count: ${intervalCount})`
 
     if (currentHourAndMins === time.value && !isOscillatorStarted && oscillator) {
         oscillator.start()
