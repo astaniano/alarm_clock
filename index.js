@@ -8,11 +8,10 @@ const audio = document.getElementById('audio')
 //     info.innerText = `waiting for the specified time`
 // })
 
-let intervalCount = 0;
-
 setInterval(() => {
-    const currentHourAndMins = new Date().toString().slice(16, 21)
-    info.innerText = `waiting for the specified time (interval count: ${intervalCount})`
+    const currentTime = new Date().toString();
+    const currentHourAndMins = currentTime.slice(16, 21)
+    info.innerText = `last time check was at: ${currentTime})`
 
     if (currentHourAndMins === time.value) {
         audio.play()
