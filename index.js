@@ -16,8 +16,6 @@ setInterval(() => {
     if (currentHourAndMins === time.value) {
         audio.play()
     }
-
-    intervalCount++
 }, 59000)
 
 stopBtn.addEventListener('click', () => {
